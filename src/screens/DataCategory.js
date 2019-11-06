@@ -1,13 +1,13 @@
 import React from 'react';
-import {
-    Text
-} from 'react-native';
+import { Text, View } from 'react-native';
 
 const DataCategory = () => {
     return (
-        <Text style={{textAlign:"center",fontWeight:"bold", fontSize:30, paddingTop:"50%"}}>
-            SCREEN DATA CATEGORY
-        </Text>
+        <View>
+            <Text style={{textAlign:"center",fontWeight:"bold", fontSize:35, paddingTop:"50%"}}>
+                SCREEN DATA CATEGORY
+            </Text>
+        </View>
     )
 }
 

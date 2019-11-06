@@ -1,10 +1,11 @@
 import React from 'react';
-import { Statusbar } from 'react-native';
 import TabNavigation from './src/screens/TabNavigation';
+import Login from './src/screens/Login';
 
 const App = () => {
   return (
-    <TabNavigation />  
+    <Login></Login>
+    // <TabNavigation />  
   )
 }
 
