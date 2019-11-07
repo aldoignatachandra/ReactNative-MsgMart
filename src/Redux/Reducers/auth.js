@@ -30,7 +30,7 @@ const auth = (state = initialState, action) => {
                 isFulfilled: true,
                 resultsLogin: action.payload,
             };
-
+            
         //REGISTER
         case 'REGISTER_PENDING':
             return {
@@ -39,14 +39,14 @@ const auth = (state = initialState, action) => {
                 isRejected: false,
                 isFulfilled: false,
             };
-        case 'REGISTER_REJECTED':
-            return {
-                ...state,
-                isLoading: false,
-                isRejected: true,
-            };
-        case 'REGISTER_FULFILLED':
-            return {
+            case 'REGISTER_REJECTED':
+                return {
+                    ...state,
+                    isLoading: false,
+                    isRejected: true,
+                };
+            case 'REGISTER_FULFILLED':
+                return {
                 ...state,
                 isLoading: false,
                 isFulfilled: true,

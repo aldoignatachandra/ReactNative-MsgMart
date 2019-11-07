@@ -1,11 +1,16 @@
 import React from 'react';
-import TabNavigation from './src/screens/TabNavigation';
-import Login from './src/screens/Login';
+import { Root } from "native-base";
+import { Provider } from 'react-redux';
+import Router from "./src/Router";
+import store from "./src/Redux/Store";
 
 const App = () => {
   return (
-    <Login></Login>
-    // <TabNavigation />  
+    <Root>
+      <Provider store={store}>
+        <Router/>
+      </Provider>
+    </Root>  
   )
 }
 
