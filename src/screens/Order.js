@@ -3,19 +3,21 @@ import {
     View,
     Image,
     TextInput,
-    Text
+    Text,
+    StatusBar,
 } from 'react-native';
 
 const Order = () => {
     return (
         <View>
-            <View style={{marginLeft:"3%", flexDirection:'row', justifyContent:"center"}}>
+            <StatusBar backgroundColor="#ffce1e"></StatusBar>
+            <View style={{marginTop: "5%",flexDirection:'row', justifyContent:"center"}}>
                 {/* SEARCH NAVIGATION */}
                 <TextInput placeholder='what MSG do you want to search....'
-                    style={{borderWidth:1, borderColor:'#ffce1e', borderRadius: 20, height: 50, fontSize: 13,
+                    style={{borderWidth:3, borderColor:'#ffce1e', borderRadius: 20, height: 50, fontSize: 13,
                             paddingLeft: 45, paddingRight: 20, backgroundColor:'white', marginRight:5}}
                 />
-                <Image style={{width:25, height:25, position:'absolute', top: 12, left: 12}}
+                <Image style={{width:25, height:25, position:'absolute', top: 12, left: 35}}
                     source={require('../images/ImageSearch.png')}
                 />
                 {/* CHART NAVIGATION */}

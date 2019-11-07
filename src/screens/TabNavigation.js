@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  Image,
-} from 'react-native';
-
+import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 
@@ -16,50 +13,57 @@ const TabNavigator = createBottomTabNavigator({
   Order: {
     screen: Order,
     navigationOptions: {
-      tabBarLabel: 'Order',
-      tabBarIcon: ({ tintColor }) => (
-        <Image style={{width: 25, height: 25}} color={tintColor} source={require('../images/ImageOrder.png')} />
-      ),
+      tabBarLabel: 'Order'
     }
   },
   DataProduct: {
     screen: DataProduct,
     navigationOptions: {
       tabBarLabel: 'Product',
-      tabBarIcon: ({ tintColor }) => (
-        <Image style={{width: 25, height: 25}} color={tintColor} source={require('../images/ImageProduct.png')} />
-      ),
     }
   },
   DataCategory: {
     screen: DataCategory,
     navigationOptions: {
       tabBarLabel: 'Category',
-      tabBarIcon: ({ tintColor }) => (
-        <Image style={{width: 25, height: 25}} color={tintColor} source={require('../images/ImageCategory.png')} />
-      ),
     }
   },
   History: {
     screen: History,
     navigationOptions: {
       tabBarLabel: 'History',
-      tabBarIcon: ({ tintColor }) => (
-        <Image style={{width: 25, height: 25}} color={tintColor} source={require('../images/ImageBill.png')} />
-      ),
     }
-  }
-},{//router config
+  },
+},{
+  //router config
   initialRouteName: 'Order',
   order: ['Order','DataProduct','DataCategory','History'],
-  //navigation for complete tab navigator
-  navigationOptions: {
-    tabBarVisible: false
-  },
-  tabBarOptions: {
-    activeTintColor: '#ffce1e',
-    inactiveTintColor: 'grey',
-  },
+  defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({focused}) => {
+      const { routeName } = navigation.state;
+      let focus = focused ? {width: 27, height: 27} : {width: 22, height: 22};
+      let sourceImage;
+      
+      if (routeName === 'Order') {
+        sourceImage = focused ? require('../images/ImageOrderSelected.png') : require('../images/ImageOrder.png');
+      } else if (routeName === 'DataProduct') {
+        sourceImage = focused ? require('../images/ImageProductSelected.png') : require('../images/ImageProduct.png');
+      } else if (routeName === 'DataCategory') {
+        sourceImage = focused ? require('../images/ImageCategorySelected.png') : require('../images/ImageCategory.png');
+      } else {
+        sourceImage = focused ? require('../images/ImageBillSelected.png') : require('../images/ImageBill.png');
+      }
+      
+      return <Image style={focus} source={sourceImage} />;
+    },
+    tabBarOptions: {
+      activeTintColor: '#ffce1e',
+      inactiveTintColor: 'grey',
+      style: {
+        borderTopWidth: 0,
+      }
+    },   
+  }),
 })
 
 const TabNavigation = createAppContainer(TabNavigator);
