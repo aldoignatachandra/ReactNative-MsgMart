@@ -3,6 +3,10 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import Login from './screens/Login';
 import Register from './screens/SignUp';
 import TabNavigation from './screens/TabNavigation';
+import AddProduct from '../src/screens/AddProduct';
+// import EditProduct from '../screens/EditProduct';
+import AddCategory from '../src/screens/AddCategory';
+import EditCategory from '../src/screens/EditCategory';
 
 const StackAuth = createStackNavigator(
     {
@@ -18,6 +22,10 @@ const StackAuth = createStackNavigator(
 const StackHome = createStackNavigator(
     {
         TabNavigation,
+        AddProduct,
+        AddCategory,
+        // EditProduct,
+        EditCategory
     },
     {
       initialRouteName: 'TabNavigation',
@@ -25,7 +33,7 @@ const StackHome = createStackNavigator(
     }
 );
   
-const Router = createStackNavigator(
+const Router = createSwitchNavigator(
     {
       StackAuth,
       StackHome,

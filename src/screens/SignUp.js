@@ -22,7 +22,7 @@ const Register = (props) => {
           if (response.value.data.status === 200) {
               showToast("Success Create New User", "success");
               setTimeout(() => {
-                props.navigation.navigate('TabNavigation');
+                props.navigation.navigate('Login');
               }, 500);
           } else {
             showToast(response.value.data.error, "warning");
