@@ -133,9 +133,9 @@ const AddProduct = (props) => {
             selectedValue={input.category_id} 
             onValueChange={(itemValue, itemIndex) => setInput({...input, category_id: itemValue})}
         >
-           {props.dataCategories.map(item => {
+           {props.dataCategories.map((item, index) => {
             return(
-                <Picker.Item label={item.name} value={item.id} />
+                <Picker.Item key={index} label={item.name} value={item.id} />
             )})}
         </Picker>
         </View>

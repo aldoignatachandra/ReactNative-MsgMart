@@ -4,7 +4,7 @@ import Login from './screens/Login';
 import Register from './screens/SignUp';
 import TabNavigation from './screens/TabNavigation';
 import AddProduct from '../src/screens/AddProduct';
-// import EditProduct from '../screens/EditProduct';
+import EditProduct from '../src/screens/EditProduct';
 import AddCategory from '../src/screens/AddCategory';
 import EditCategory from '../src/screens/EditCategory';
 
@@ -24,7 +24,7 @@ const StackHome = createStackNavigator(
         TabNavigation,
         AddProduct,
         AddCategory,
-        // EditProduct,
+        EditProduct,
         EditCategory
     },
     {

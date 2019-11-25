@@ -40,7 +40,7 @@ const DataProduct = (props) => {
                 { props.dataProduct.map((data, index) => {
                     return (
                     <View key={index}>
-                        <ListItem onPress = {() =>{ /*props.navigation.navigate('EditProduct') }*/}}
+                        <ListItem onPress = {() =>{ props.navigation.navigate('EditProduct',{selectedRow:data})}}
                             Component={TouchableScale}
                             friction={90}
                             tension={100}
