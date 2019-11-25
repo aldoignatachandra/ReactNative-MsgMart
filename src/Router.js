@@ -32,7 +32,7 @@ const StackHome = createStackNavigator(
       headerMode: 'none',
     }
 );
-  
+
 const Router = createSwitchNavigator(
     {
       StackAuth,
