@@ -55,7 +55,6 @@ const auth = (state = initialState, action) => {
             };
         
         //GET ITEM
-
         case 'ITEM_PENDING':
             return {
                 ...state,
@@ -76,7 +75,7 @@ const auth = (state = initialState, action) => {
                 isFulfilled: true,
                 resultItem:  JSON.parse(action.payload)
             };
-
+        
         //DEFAULT STATE
         default:
             return {
