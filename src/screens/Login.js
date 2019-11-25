@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { StyleSheet, View, Image, AsyncStorage, TouchableOpacity, StatusBar } from 'react-native';
-import { Item, Input, Form, Label, Text, Toast} from 'native-base';
-import { login } from "../Redux/Actions/auth";
+import { StyleSheet, View, Image, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
+import { Item, Input, Form, Label, Text, Toast } from 'native-base';
+import { login, getItem } from "../Redux/Actions/auth";
 import { connect } from "react-redux";
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Login = (props) => {
 
@@ -18,33 +19,51 @@ const Login = (props) => {
     const handleLogin = () => {
         dispatch(login(dataLogin))
         .then(response => {
-            console.log(response);
             if (response.value.data.status === 200) {
-                AsyncStorage.setItem('token', response.value.data.result.token, () => {});
-                AsyncStorage.setItem('user', response.value.data.result.username, () => {});
+                AsyncStorage.setItem('user', JSON.stringify(response.value.data.result), () => {});
                 showToast("Login Success", "success");
+                checkUser();
                 setTimeout(() => {
                     props.navigation.navigate('TabNavigation');
                 }, 500);
             } else {
                 showToast(response.value.data.error, "warning");
             }
-        })
-        .catch(error => alert(error.value.data.error));
+        }).catch(error => alert(error.value.data.error));
     };
+
+    const checkUser = () => {
+        dispatch(getItem())
+        .then(response => {
+            if (response.value != null) {
+                props.navigation.navigate('TabNavigation');
+                showToast("Login Success", "success");
+            }       
+        })
+        .catch(error => {
+            console.log (error);
+        })
+    }
 
     const showToast = (message, types) => {
         Toast.show({
             text: message,
             buttonText: "Okay",
-            type: types == "warning" ? "warning":"success",
+            type: types == "warning" ? "warning" : "success",
             duration: 3000,
             position: "bottom"
         })
-    }
+    }   
 
-    AsyncStorage.getItem('token', () => {}).then((token) => {if (token !== null) {props.navigation.navigate('TabNavigation'); showToast("Login Success", "success");}});
-    //AsyncStorage.removeItem('token');
+    useEffect(() => {
+        const check = setTimeout(() => {
+            checkUser();
+        }, 0);
+
+        return () => {
+            clearTimeout(check)
+        }
+    },[]);
 
     return (
         <View style={styles.container}>

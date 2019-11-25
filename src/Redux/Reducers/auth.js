@@ -1,6 +1,7 @@
 const initialState = {
     resultsLogin: [],
     resultsRegister: [],
+    resultItem: [],
     isLoading: false,
     isRejected: false,
     isFulfilled: false,
@@ -28,7 +29,7 @@ const auth = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isFulfilled: true,
-                resultsLogin: action.payload,
+                resultsLogin: action.payload.data.result,
             };
             
         //REGISTER
@@ -51,6 +52,28 @@ const auth = (state = initialState, action) => {
                 isLoading: false,
                 isFulfilled: true,
                 resultsRegister: action.payload,
+            };
+        
+        //GET ITEM
+        case 'ITEM_PENDING':
+            return {
+                ...state,
+                isLoading: true,
+                isRejected: false,
+                isFulfilled: false,
+            };
+            case 'ITEM_REJECTED':
+                return {
+                ...state,
+                isLoading: false,
+                isRejected: true,
+                };
+            case 'ITEM_FULFILLED':
+                return {
+                ...state,
+                isLoading: false,
+                isFulfilled: true,
+                resultItem:  JSON.parse(action.payload)
             };
         
         //DEFAULT STATE
