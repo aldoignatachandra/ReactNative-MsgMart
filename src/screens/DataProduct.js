@@ -33,7 +33,7 @@ const DataProduct = (props) => {
             <View style={{justifyContent:'space-between', flexDirection: 'row', alignItems:'center', height: 80, backgroundColor:'#f7b81f'}}>
                 <Text style={{marginHorizontal:17, fontSize: 25, fontWeight:'bold', color:'white'}}>Data Product</Text>
                 <TouchableOpacity onPress = {() =>{ props.navigation.navigate('AddProduct') }}>
-                    <Icon  name={'circle-with-plus'} size={30} color={'white'} style={{marginHorizontal:17}}/>
+                    <Icon name={'circle-with-plus'} size={30} color={'white'} style={{marginHorizontal:17}}/>
                 </TouchableOpacity>
             </View>
             <ScrollView style={{marginHorizontal:17, flex:1, backgroundColor:'white'}} showsVerticalScrollIndicator={false}>

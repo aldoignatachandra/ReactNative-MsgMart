@@ -30,33 +30,33 @@ const DataCategory = (props) => {
 
     return (
         <>
-        <View style={{justifyContent:'space-between', flexDirection: 'row', alignItems:'center', height: 80, backgroundColor:'#f7b81f'}}>
-            <Text style={{marginHorizontal:17, fontSize: 25, fontWeight:'bold', color:'white'}}>Data Category</Text>
-            <TouchableOpacity onPress = {() =>{ props.navigation.navigate('AddCategory') }}>
-                <Icon name={'circle-with-plus'} size={30} color={'white'} style={{marginHorizontal:17}}/>
-            </TouchableOpacity>
-        </View>
-        <ScrollView style={{marginHorizontal:17, flex:1, backgroundColor:'white'}} showsVerticalScrollIndicator={false}>
-            {props.dataCategories.map((data, index) => {
-                return (
-                    <View key={index}>
-                    <ListItem onPress = {() =>{ props.navigation.navigate('EditCategory',{selectedRow:data})}}
-                        Component={TouchableScale}
-                        friction={90}
-                        tension={100}
-                        activeScale={0.90}
-                        title={data.name}
-                        chevron={{ color: 'black' }}
-                        badge={{ 
-                            value: "Halal", textStyle: { color: 'white' },
-                            badgeStyle: { backgroundColor:"green"}
-                        }}    
-                    />
-                    <Divider/>
-                    </View>
-                )
-                })}
-        </ScrollView>
+            <View style={{justifyContent:'space-between', flexDirection: 'row', alignItems:'center', height: 80, backgroundColor:'#f7b81f'}}>
+                <Text style={{marginHorizontal:17, fontSize: 25, fontWeight:'bold', color:'white'}}>Data Category</Text>
+                <TouchableOpacity onPress = {() =>{ props.navigation.navigate('AddCategory') }}>
+                    <Icon name={'circle-with-plus'} size={30} color={'white'} style={{marginHorizontal:17}}/>
+                </TouchableOpacity>
+            </View>
+            <ScrollView style={{marginHorizontal:17, flex:1, backgroundColor:'white'}} showsVerticalScrollIndicator={false}>
+                {props.dataCategories.map((data, index) => {
+                    return (
+                        <View key={index}>
+                        <ListItem onPress = {() =>{ props.navigation.navigate('EditCategory',{selectedRow:data})}}
+                            Component={TouchableScale}
+                            friction={90}
+                            tension={100}
+                            activeScale={0.90}
+                            title={data.name}
+                            chevron={{ color: 'black' }}
+                            badge={{ 
+                                value: "Halal", textStyle: { color: 'white' },
+                                badgeStyle: { backgroundColor:"green"}
+                            }}    
+                        />
+                        <Divider/>
+                        </View>
+                    )
+                    })}
+            </ScrollView>
         </>
     )
 }
