@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { getProduct, postProduct, patchProduct, deleteProduct } from '../Redux/Actions/product';
 import { ListItem, Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 import TouchableScale from 'react-native-touchable-scale';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const DataProduct = (props) => {
 
